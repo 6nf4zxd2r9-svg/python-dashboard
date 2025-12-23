@@ -13,6 +13,22 @@ def load_data():
     return df
 
 df = load_data()
+# Add sidebar filters
+st.sidebar.header("Filters")
+# Product filter
+products = st.sidebar.multiselect(
+"Select Products",
+options=df['Product'].unique(),
+default=df['Product'].unique()
+)
+# Region filter
+regions = st.sidebar.multiselect(
+"Select Regions",
+options=df['Region'].unique(),
+default=df['Region'].unique()
+)
+# Apply filters
+df = df[df['Product'].isin(products) & df['Region'].isin(regions)]
 
 st.header("Key Metrics")
 col1, col2, col3 = st.columns(3)
