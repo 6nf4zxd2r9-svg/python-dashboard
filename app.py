@@ -38,7 +38,7 @@ with col1:
 
 with col2:
     total_sales = len(df)
-    st.metric("Total Sales", f"{total_sales:,}")
+    st.metric("Total no. Sales", f"{total_sales:,}")
 with col3:
     avg_sale = df['Total'].mean()
     st.metric("Average Sale", f"${avg_sale:.0f}")
@@ -67,7 +67,7 @@ plt.xticks(rotation=45)
 
 
 region_sales = df.groupby('Region')['Total'].sum()
-fig3, ax3 = plt.subplots(figsize=(10, 6))
+fig3, ax3 = plt.subplots(figsize=(10, 4))
 colors = sns.color_palette('pastel')
 ax3.pie(region_sales.values, labels=region_sales.index, autopct='%1.1f%%',
 colors=colors, startangle=90)
